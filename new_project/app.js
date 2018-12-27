@@ -9,7 +9,7 @@ const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
 const userRoutes = require("./routes/users");
 
-const mongoUrlAdmin = "mongodb+srv://Stephenh1989:manomite88@hoa-1fr8b.mongodb.net/test?retryWrites=true"
+const mongoUrlAdmin = "mongodb+srv://Stephenh1989:"+process.env.Mongo_PW+"@hoa-1fr8b.mongodb.net/test?retryWrites=true"
 //put entire url in a variable instead of just the user and password.
 mongoose.connect(mongoUrlAdmin, 
 	{useNewUrlParser: true});

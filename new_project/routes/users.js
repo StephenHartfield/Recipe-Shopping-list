@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const JWT = require('jsonwebtoken');
 
 const User = require('../models/user');
 
@@ -24,7 +25,7 @@ router.post('/signup', (req, res, next) => {
 							_id: new mongoose.Types.ObjectId(),
 							email: req.body.email,
 							password: hash
-						})
+						});
 						user
 							.save()
 							.then(result => {
@@ -40,10 +41,56 @@ router.post('/signup', (req, res, next) => {
 								})
 							});
 					}				
-	})
+			})
 			}
+		})		
+})
+
+router.post('/login', (req, res, next) => {
+	//could be User.findOne
+	User.find({ email: req.body.email })
+	.exec()
+	.then(user => {
+		if(user.length < 1){
+			return res.status(404).json({
+				message: 'Auth failed'
+			})			
+			// below is not a great pattern, but something could use. the problem is people can find a list eventually and focus on those emails to hack it.
+			// return res.status(404).json({
+			// 	message: "Mail not found, user doesn\'t exist."
+			// });
+		}
+		bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+			if(user.length < 1){
+				return res.status(404).json({
+					message: 'Auth failed'
+				})	
+			}
+			if(result) {
+				const token = JWT.sign({
+					email: user[0].email,
+					userId: user[0]._id
+				}, 
+				process.env.JWT_Key,
+				{
+					expiresIn: '1h'
+				}); 
+				return res.status(200).json({
+					message: "Auth successful",
+					token: token
+				})
+			}
+			res.status(401).json({
+				message: "Auth failed"
+			})
 		})
-		
+	})
+	.catch(err => {
+		console.log(err);
+		res.status(500).json({
+			error: err
+		})
+	})
 })
 
 router.delete('/:userId', (req, res, next) => {

@@ -1,0 +1,6 @@
+{
+	"env": {
+		"Mongo_PW": "manomite88",
+		"JWT_Key": "secret"
+	}
+}
