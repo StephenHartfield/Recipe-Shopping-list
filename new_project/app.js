@@ -11,8 +11,7 @@ const userRoutes = require("./routes/users");
 
 const mongoUrlAdmin = "mongodb+srv://Stephenh1989:"+process.env.Mongo_PW+"@hoa-1fr8b.mongodb.net/test?retryWrites=true"
 //put entire url in a variable instead of just the user and password.
-mongoose.connect(mongoUrlAdmin, 
-	{useNewUrlParser: true});
+mongoose.connect(mongoUrlAdmin, {useNewUrlParser: true});
 
 mongoose.connection.once('open', () => {console.log('Connection success!');}).on('error', (err) => {console.log('Connection error:', err);});
 
@@ -22,7 +21,6 @@ app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
 
 app.use((req, res, next) => {
 	//can restrict, making '*' the url of website ex: 'http://heartoftheartisan.com'
