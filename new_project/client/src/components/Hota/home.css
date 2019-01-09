@@ -83,22 +83,27 @@
 	border-radius: 20px;
 }
 
-.imgS2 { 
-	height: 100%; 
-	width: 100%;
-	border: 3px solid #331a00;
-}
-
 .buttonshop, .buttonrequest {
-	transition: box-shadow .5s, background-color .5s, color .5s;
+	transition: background-color .5s;
 	background-color: #deb887;
+	border-radius: 10px;
 }
 
 .buttonshop:hover, .buttonrequest:hover {
-	box-shadow: 5px 5px 5px;
 	background-color: #663333;
-	color: white;
 }
+
+.shoplink {
+	text-decoration: none;
+	color: black;
+	transition: color .5s;
+}
+
+.shoplink:hover {
+	color: white;
+	text-decoration: none;
+}
+
 
 @media(max-width: 767px) {
 	.backgBorder { width: 95%; height:520px; }

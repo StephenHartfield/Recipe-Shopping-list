@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {photos} from './photos.js'
+import {Col, Row} from 'reactstrap'
 import './home.css'
 
 class ImageTray extends Component {
@@ -10,15 +11,17 @@ class ImageTray extends Component {
 	render(){
 		return(
 			<div>
-				<div className='pic col-md-4 col-sm-4 col-xs-offset-2 col-xs-10'>
-					<img src={photos(this.props.photos[0])} title={this.props.titles[0]} className={this.props.styling[0]} />
-				</div>
-				<div className='pic col-md-4 col-sm-4 col-xs-offset-2 col-xs-10'>
-					<img src={photos(this.props.photos[1])} title={this.props.titles[1]} className={this.props.styling[1]} />
-				</div>
-				<div className='pic col-md-4 col-sm-4 col-xs-offset-2 col-xs-10'>
-					<img src={photos(this.props.photos[2])} title={this.props.titles[2]} className={this.props.styling[2]} />
-				</div>
+				<Row>
+					<Col md={4} className='pic'>
+						<img src={photos(this.props.photos[0])} title={this.props.titles[0]} className='imgS1' />
+					</Col>
+					<Col md={4} className='pic'>
+						<img src={photos(this.props.photos[1])} title={this.props.titles[1]} className='imgS1' />
+					</Col>
+					<Col md={4} className='pic'>
+						<img src={photos(this.props.photos[2])} title={this.props.titles[2]} className='imgS1' />
+					</Col>
+				</Row>
 			</div>
 		);	
 	}
