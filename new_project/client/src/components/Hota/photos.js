@@ -1,4 +1,3 @@
-import Image1 from './MPics/1.jpg'
 import Image2 from './MPics/2.jpeg'
 import Image3 from './MPics/3.jpeg'
 import Image4 from './MPics/4.jpeg'
@@ -20,7 +19,7 @@ import Image19 from './MPics/L2.jpeg'
 import ImageA from './MPics/about.jpeg'
 import ImageS from './MPics/selfie.jpeg'
 
-var photo = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, ImageA, ImageS];
+var photo = [null, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, ImageA, ImageS];
 
 export function photos(num) {
 	return photo[num];
