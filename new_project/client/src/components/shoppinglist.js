@@ -40,13 +40,14 @@ class ShoppingList extends Component {
 			            		{items.map((item) => (
 				            		<CSSTransition key={item._id} timeout={1000} classNames='fade'>
 			            				<Col md={4} style={{margin: '50px 0 50px 0'}}>
-				            				<Card style={{height: '500px', maxWidth: '318px', backgroundColor: 'gray'}}>
-										        <CardImg top width="100%" height="180px" style={{backgroundColor: 'white'}} className='img img-responsive' src={item.productImage} />
+				            				<Card style={{height: '500px', maxWidth: '300px', backgroundColor: '#F5F5F5', border: 'solid pink 3px', borderRadius: '20px'}}>
+										        <CardImg top width="100%" height="200px" style={{backgroundColor: 'white', borderRadius: '20px'}} className='img img-responsive' src={item.productImage} />
 										        <CardBody>
 										          <CardTitle style={{height: '40px'}} className='text-center'><strong>{item.name}</strong></CardTitle>
-										          <CardSubtitle><Badge color='success' pill> ${(item.price).toFixed(2)}</Badge></CardSubtitle>
-										          <CardText style={{height: '150px'}}>{item.description}</CardText>
-										          <Button className="remove-btn" outline block color='danger' size='xs' 
+										          <CardSubtitle><Badge pill> ${(item.price).toFixed(2)}</Badge></CardSubtitle>
+										          <CardText style={{height: '120px'}}>{item.description}</CardText>
+										          <hr style={{backgroundColor: 'white'}}/>
+										          <Button className="remove-btn" color='danger' size='xs' 
 				            					onClick={this.onDeleteClick.bind(this, item._id)}>&times;</Button>
 										        </CardBody>
 										    </Card>
