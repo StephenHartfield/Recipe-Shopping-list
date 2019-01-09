@@ -66,21 +66,25 @@ router.get('/', (req, res, next) => {
 });
 //post method
 //router.post('/', checkAuth, upload.single('productImage'), (req, res, next) => {  })
-router.post("/", (req, res, next) => {
+router.post("/",  upload.single('productImage'), (req, res, next) => {
 	const product = new Product({
 		_id: new mongoose.Types.ObjectId(),
-		name: req.body.name
-		//price: req.body.price,
-		//productImage: req.file.path
+		name: req.body.name,
+		price: req.body.price,
+		description: req.body.description,
+		productImage: req.file
 	});
 	console.log(req.body);
 	product.save()
 	.then(result => {
-		res.status(201).json({result
+		res.status(201).json(result
+			 // _id: result._id,
+			 // name: result.name,
+			 // price: result.price
 			// message: 'Created product successfully',
 			// createdProduct: {
-			// 	name: result.name,
-			// 	//price: result.price,
+				//name: result.name
+			 	//price: result.price,
 			// 	_id: result._id,
 				//productImage: result.productImage,
 				// request: {
@@ -88,7 +92,7 @@ router.post("/", (req, res, next) => {
 				// 	url: '/products/' + result._id
 				// }
 			//}
-		});
+		);
 	})
 	.catch(err => {console.log(err);
 		res.status(500).json({error: err});

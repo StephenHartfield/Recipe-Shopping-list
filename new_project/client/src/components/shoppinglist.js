@@ -1,5 +1,5 @@
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import {Container, Button, ListGroup, ListGroupItem} from 'reactstrap'
+import {Container, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Badge} from 'reactstrap'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemaction.js';
@@ -33,19 +33,24 @@ class ShoppingList extends Component {
            <div>
             <Container>
             	{/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
-	            <ListGroup>
-	            	<TransitionGroup className="shopping-list">
-	            		{items.map(({name, _id}) => (
-	            			<CSSTransition key={_id} timeout={1000} classNames='fade'>
-	            				<ListGroupItem>
-	            					<Button className="remove-btn" color='danger' size='xs' 
-	            					onClick={this.onDeleteClick.bind(this, _id)}>&times;</Button>
-	            				{name}
-	            				</ListGroupItem>
-	            			</CSSTransition>
-	            		))}
-	            	</TransitionGroup>
-	            </ListGroup>
+		        	<TransitionGroup className="shopping-list">
+		            		<CardDeck>
+		            		{items.map((item) => (
+			            		<CSSTransition key={item._id} timeout={1000} classNames='fade'>
+			            				<Card style={{height: '500px', maxWidth: '318px'}}>
+									        <CardImg top width="100%" height="180px" className='img img-responsive' src={item.productImage} />
+									        <CardBody>
+									          <CardTitle style={{height: '40px'}} className='text-center'><strong>{item.name}</strong></CardTitle>
+									          <CardSubtitle><Badge color='success' pill> ${(item.price).toFixed(2)}</Badge></CardSubtitle>
+									          <CardText style={{height: '150px'}}>{item.description}</CardText>
+									          <Button className="remove-btn" outline block color='danger' size='xs' 
+			            					onClick={this.onDeleteClick.bind(this, item._id)}>&times;</Button>
+									        </CardBody>
+									    </Card>
+			            		</CSSTransition>
+			            	))}
+		            		</CardDeck>
+		        	</TransitionGroup>
         {/* below is not needed in this application, but is normal way to map items in state and remember items is defined under render function 
             {items.map((item, i) => {return (<p key={i}>{item.name}</p>)})}	*/}
             </Container>

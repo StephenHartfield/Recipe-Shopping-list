@@ -20,12 +20,20 @@ export const deleteItem = id => dispatch => {
 		}))
 };
 
-export const addItem = item => dispatch => {
-	axios.post('/products/', item)
-	.then(res => dispatch({
-		type: ADD_ITEM,
-		payload: res.data
-	}))
+export const addItem = (item, data) => dispatch => {
+	axios.post('/products/', item, data)
+	.then(res => {	
+		dispatch({
+			type: ADD_ITEM,
+			payload: res.data
+		})
+	})
+	// axios
+	// .get('/products')
+	// .then(res => dispatch({
+	// 	type: GET_ITEMS,
+	// 	payload: res.data
+	// }))
 };
 
 export const setItemsLoading = () => {

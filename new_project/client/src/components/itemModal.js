@@ -10,7 +10,11 @@ class ItemModal extends Component {
         super(props);
         this.state = {
         	modal: false,
-        	name: ''
+        	name: '',
+        	price: '',
+        	description: '',
+        	loading: 0,
+        	productImage: null
         }
     }
 
@@ -26,13 +30,26 @@ class ItemModal extends Component {
     	})
     }
 
+    handleFile = (e) => {
+    	this.setState({
+    		[e.target.name]: e.target.files[0],
+    		loading: 0
+    	})
+    }
+
     onSubmit = (e) => {
     	e.preventDefault();
     	const newItem = {
-    		name: this.state.name
+    		name: this.state.name,
+    		price: this.state.price,
+    		description: this.state.description
     	}
+    	let data = new FormData();
+    	data.append('file', this.state.productImage);
+    	//newItem.append('file', this.state.productImage, this.state.productImage.name)
+    	
     	//Add item via addItem action
-    	this.props.addItem(newItem);
+    	this.props.addItem(newItem, data);
 
     	//Close the modal
     	this.toggle();
@@ -50,7 +67,14 @@ class ItemModal extends Component {
             			<Form onSubmit={this.onSubmit}>
             				<FormGroup>
             					<Label for='item'>Item</Label>
-            					<Input type='text' name='name' id='item' placeholder='Add Shopping Item' onChange={this.onChange} />
+            					<Input type='text' name='name' id='item' placeholder='Add Item Name' onChange={this.onChange} />
+            					<br/>
+            					<Input type='number' step='0.01' name='price' id='price' placeholder='Add Price' onChange={this.onChange} />
+            					<br/>
+            					<Input type='text' name='description' id='description' placeholder='Add an Amazing Description' onChange={this.onChange} />
+            					<br/>
+            					<Input type='file' name='productImage' id='' onChange={this.handleFile} />
+            					<div>{Math.round(this.state.loading, 2)} %</div>
             					<Button color='dark' style={{marginTop: '2rem'}} block>Add Item</Button>
             				</FormGroup>
             			</Form>
