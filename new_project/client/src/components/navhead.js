@@ -31,7 +31,7 @@ class AppNavbar extends Component {
 		return (			
 		<div>  
 			<Navbar expand='sm' color='light' light className='topb'>
-				<NavbarBrand href='/home' style={{width: '100px', display: 'inline'}}><img src={photos(18)} className='thisimg' alt="" /></NavbarBrand>
+				<NavbarBrand href='/home' style={{width: '100px', display: 'inline'}}><img src={photos(17)} className='thisimg' alt="" /></NavbarBrand>
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className='ml-auto firstT' navbar>
