@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
+import ItemModal from './itemModal.js'
+
 
 class ShoppingList extends Component {
     //shortcut for constructor(props){ super(props); this.state = {} } but this shortcut might not receive props
@@ -32,6 +34,7 @@ class ShoppingList extends Component {
         return (
            <div>
             <Container>
+            <itemModal />
             	{/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
 		        	<TransitionGroup className="shopping-list">
 		            		<CardDeck>

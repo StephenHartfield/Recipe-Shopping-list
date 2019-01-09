@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // import {photos} from './photos'
-// import './Here.css'
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container} from 'reactstrap';
-// import {NavLink} from 'react-router-dom'
+import './navhead.css'
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Container} from 'reactstrap';
+import {NavLink} from 'react-router-dom'
+import {photos} from '../components/Hota/photos.js'
 
 
 
@@ -29,27 +30,25 @@ class AppNavbar extends Component {
 	render(){
 		return (			
 		<div>  
-			<Navbar expand='sm' color='light' light className='mb-5'>
-				<Container>
-					<NavbarBrand href='/'> Shopping List </NavbarBrand>
-					<NavbarToggler onClick={this.toggle} />
-					<Collapse isOpen={this.state.isOpen} navbar>
-						<Nav className='ml-auto' navbar>
-							<NavItem>
-								<NavLink href='/home' activeStyle={tabStyle}> Home </NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink href='/About' activeStyle={tabStyle}> About </NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink href='/Store' activeStyle={tabStyle}> Store </NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink href='/Cart' activeStyle={tabStyle}> Cart </NavLink>
-							</NavItem>
-						</Nav>
-					</Collapse>
-				</Container>
+			<Navbar expand='sm' color='light' light className='topb'>
+				<NavbarBrand href='/home' style={{width: '100px', display: 'inline'}}><img src={photos(18)} className='thisimg' alt="" /></NavbarBrand>
+				<NavbarToggler onClick={this.toggle} />
+				<Collapse isOpen={this.state.isOpen} navbar>
+					<Nav className='ml-auto firstT' navbar>
+						<NavItem className='tab'>
+							<NavLink to='/home' activeStyle={tabStyle}> Home </NavLink>
+						</NavItem>
+						<NavItem className='tab'>
+							<NavLink to='/About' activeStyle={tabStyle}> About </NavLink>
+						</NavItem>
+						<NavItem className='tab'>
+							<NavLink to='/Store' activeStyle={tabStyle}> Store </NavLink>
+						</NavItem>
+						<NavItem className='tab'>
+							<NavLink to='/Cart' activeStyle={tabStyle}> Cart </NavLink>
+						</NavItem>
+					</Nav>
+				</Collapse>
 			</Navbar>
 				
 				{/*<Collapse isOpen={this.state.isOpen} navbar>
