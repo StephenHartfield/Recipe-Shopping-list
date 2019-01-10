@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
 // import {photos} from './photos'
 import './navhead.css'
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Container} from 'reactstrap';
-import {NavLink} from 'react-router-dom'
-import {photos} from '../components/Hota/photos.js'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Container } from 'reactstrap';
+import { NavLink } from 'react-router-dom'
+import { photos } from '../components/Hota/photos.js'
 
 
 
 let tabStyle = {
-	color: 'pink',
-	fontWeight: 'bold',
-	fontSize: '17px'
+    color: 'pink',
+    fontWeight: 'bold',
+    fontSize: '17px'
 }
 
 class AppNavbar extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			isOpen: false
-		}
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        }
+    }
 
-	toggle = () => {
-		this.setState({
-			isOpen: !this.state.isOpen
-		})
-	}
-	
-	render(){
-		return (			
-		<div>  
+    toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
+
+    render() {
+            return (
+                    <div>  
 			<Navbar expand='sm' className='topb'>
 				<NavbarBrand href='/home' style={{width: '100px', display: 'inline'}}><img src={photos(17)} className='thisimg' alt="" /></NavbarBrand>
 				<NavbarToggler onClick={this.toggle} />

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './home.css'
 import ImageTray from './imagepane.js'
-import {BrowserRouter, Route, Link} from 'react-router-dom'
-import {NavLink} from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { circle, Row, Col } from 'react-bootstrap'
 
 
@@ -12,34 +12,34 @@ const first = [9, 5, 7];
 const second = [8, 4, 11];
 
 class Home extends Component {
-	constructor(props){
-		super(props);
-/*		this.state = ({
-			input: '',
-			messages: []
-		})
-	}
-	handleChange = (e) => {
-		this.setState({
-			input: e.target.value
-		})
-	}
-	submitMessage = () => {
-		this.setState({
-			input: '',
-			messages: [...this.state.messages, this.state.input]
-		})
-*/
-}
+    constructor(props) {
+        super(props);
+        /*		this.state = ({
+        			input: '',
+        			messages: []
+        		})
+        	}
+        	handleChange = (e) => {
+        		this.setState({
+        			input: e.target.value
+        		})
+        	}
+        	submitMessage = () => {
+        		this.setState({
+        			input: '',
+        			messages: [...this.state.messages, this.state.input]
+        		})
+        */
+    }
 
-	componentDidMount() {
-		window.scrollTo(0, 0);
-		document.title = 'Heart of the Artisan | Home'
-	}
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        document.title = 'Heart of the Artisan | Home'
+    }
 
-	render() {
-		return (
-			<div className='full'>
+    render() {
+        return (
+            <div className='full'>
 				<div className='container'>
 				{/*<div>
 					<input type="text" onChange={this.handleChange} value={this.state.input}/> <br/>
@@ -70,8 +70,8 @@ class Home extends Component {
 						</div>
 					</div>
 			</div>
-		)
-	}
+        )
+    }
 }
 
 export default Home;

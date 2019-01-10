@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import {Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Badge} from 'reactstrap'
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Badge } from 'reactstrap'
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
@@ -8,9 +8,13 @@ import PropTypes from 'prop-types';
 
 class ShoppingList extends Component {
     //shortcut for constructor(props){ super(props); this.state = {} } but this shortcut might not receive props
-	componentWillMount() {
-	    this.props.getItems();
-	} 
+    componentWillMount() {
+        this.props.getItems();
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
 
     // enterItem = () => {
     // 	const name = prompt('Enter Item');
@@ -25,13 +29,13 @@ class ShoppingList extends Component {
     // }
 
     onDeleteClick = (_id) => {
-    	this.props.deleteItem(_id);
+        this.props.deleteItem(_id);
     }
 
     render() {
-        const {items} = this.props.item;
+        const { items } = this.props.item;
         return (
-           <div>
+            <div>
             <Container style={{paddingTop: '50px'}}>
             	{/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
 		        	<TransitionGroup className="shopping-list">
@@ -66,12 +70,12 @@ class ShoppingList extends Component {
 }
 
 ShoppingList.propTypes = {
-	getItems: PropTypes.func.isRequired,
-	item: PropTypes.object.isRequired
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-	item: state.item
+    item: state.item
 })
 
-export default connect(mapStateToProps, {getItems, deleteItem})(ShoppingList);
+export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);

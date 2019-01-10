@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import {photos} from './photos.js'
+import { photos } from './photos.js'
 import './about.css'
-import {Row, Col} from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 
 class About extends Component {
-	constructor(props){ 
-		super(props);
-	}
-	componentDidMount() {
-		window.scrollTo(0, 0);
-		document.title = 'Heart of the Artisan | About'
-	}
-	render(){
-		return (
-			<div className='aboutfull' style={{backgroundImage: `url(${photos(16)})`, backgroundSize: 'cover'}}>
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        document.title = 'Heart of the Artisan | About'
+    }
+    render() {
+        return (
+            <div className='aboutfull' style={{backgroundImage: `url(${photos(16)})`, backgroundSize: 'cover'}}>
 				<div className="container" style={{padding: '100px 0 150px 0'}}>
 						<Row>
 							<Col md={3}></Col>
@@ -29,8 +29,8 @@ class About extends Component {
 						</Row>
 				</div>
 			</div>
-		);
-	}
+        );
+    }
 }
 
 export default About;
