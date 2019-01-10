@@ -13,7 +13,7 @@ class About extends Component {
 	}
 	render(){
 		return (
-			<div className='aboutfull' style={{backgroundImage: `url(${photos(16)})`, backgroundSize: 'cover'}}>
+			<div className='aboutfull'>
 				<div className="container" style={{padding: '100px 0 150px 0'}}>
 						<Row>
 							<Col md={3}></Col>
