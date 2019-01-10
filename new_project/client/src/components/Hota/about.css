@@ -1,5 +1,7 @@
 .aboutfull {
-	background: fixed center;
+	background: no-repeat fixed; 
+	background-image: url('./MPics/storebg3.jpg');
+	background-size: cover;
 }
 
 .info {
@@ -8,6 +10,6 @@
 }
 
 .aboutimage {
-	border-radius: 500px;
+	border-radius: 20px;
 	width: 100%;
 }

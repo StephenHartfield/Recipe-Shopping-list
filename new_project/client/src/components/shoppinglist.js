@@ -40,7 +40,7 @@ class ShoppingList extends Component {
 			            		{items.map((item) => (
 				            		<CSSTransition key={item._id} timeout={1000} classNames='fade'>
 			            				<Col md={4} style={{margin: '50px 0 50px 0'}}>
-				            				<Card style={{height: '500px', maxWidth: '300px', backgroundColor: '#F5F5F5', border: 'solid pink 3px', borderRadius: '20px'}}>
+				            				<Card style={{height: '500px', maxWidth: '300px', backgroundColor: '#F5F5F5', border: 'solid pink 3px', borderRadius: '20px', boxShadow: '10px 10px 10px'}}>
 										        <CardImg top width="100%" height="200px" style={{backgroundColor: 'white', borderRadius: '20px'}} className='img img-responsive' src={item.productImage} />
 										        <CardBody>
 										          <CardTitle style={{height: '40px'}} className='text-center'><strong>{item.name}</strong></CardTitle>
