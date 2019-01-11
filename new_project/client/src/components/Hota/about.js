@@ -13,8 +13,8 @@ class About extends Component {
     }
     render() {
         return (
-            <div className='aboutfull' style={{backgroundImage: `url(${photos(16)})`, backgroundSize: 'cover'}}>
-				<div className="container" style={{padding: '100px 0 150px 0'}}>
+            <div className = 'aboutfull'>
+        <div className="container" style={{padding: '100px 0 250px 0'}}>
 						<Row>
 							<Col md={3}></Col>
 								<Col md={6} style={{height: '550px', width: '600px'}}>
@@ -27,8 +27,8 @@ class About extends Component {
 								</div>
 								</Col>
 						</Row>
+				</div> 
 				</div>
-			</div>
         );
     }
 }

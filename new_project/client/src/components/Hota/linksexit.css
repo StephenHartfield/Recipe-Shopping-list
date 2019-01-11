@@ -1,48 +1,47 @@
 .bg {
-	background: white;
-	width: 100%;
-	border-bottom: 2px solid gray;
+    background: white;
+    width: 100%;
 }
 
 .faceicon {
-	text-decoration: none;
-	color: darkblue;
-	font-size: 4em;
-	transition: color 1s;
+    text-decoration: none;
+    color: darkblue;
+    font-size: 4em;
+    transition: color 1s;
 }
 
 .faceicon:hover {
-	color: #00004d;
+    color: #00004d;
 }
 
 .etsy {
-	font-family: 'Font Awesome 5 Free';
-	margin: 0 20px 35px 20px;
-	background: white;
-	cursor: pointer;
+    font-family: 'Font Awesome 5 Free';
+    margin: 0 20px 35px 20px;
+    background: white;
+    cursor: pointer;
 }
 
 .etsy a {
-	font-size: 2em;
-	color: orange;
-	text-decoration: none;
-	transition: color 1s;
+    font-size: 2em;
+    color: orange;
+    text-decoration: none;
+    transition: color 1s;
 }
 
 .etsy a:hover {
-	color: #b36b00;
+    color: #b36b00;
 }
 
 .instagram {
-	font-size: 50px;
-	border-radius:10px;
-	padding: 0 5px 1px 5px;
-	color:white;
-	transition: color 1s;
-	cursor: pointer;
-	background: linear-gradient(45deg, #405DE6, #5851db, #833Ab4, #c13584, #e1306c, #fd1d1d);
+    font-size: 50px;
+    border-radius: 10px;
+    padding: 0 5px 1px 5px;
+    color: white;
+    transition: color 1s;
+    cursor: pointer;
+    background: linear-gradient(45deg, #405DE6, #5851db, #833Ab4, #c13584, #e1306c, #fd1d1d);
 }
 
 .instagram:hover {
-	color: lightgray;
+    color: lightgray;
 }

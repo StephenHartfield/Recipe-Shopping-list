@@ -31,7 +31,7 @@ class ItemModal extends Component {
 
     handleFile = (e) => {
         this.setState({
-            productImage: e.target.files[0]
+            [e.target.name]: e.target.files[0]
         })
     }
 
@@ -40,8 +40,7 @@ class ItemModal extends Component {
         const newItem = {
             name: this.state.name,
             price: this.state.price,
-            description: this.state.description,
-            productImage: this.state.productImage
+            description: this.state.description
         }
         //newItem.append('file', this.state.productImage, this.state.productImage.name)
 
@@ -71,7 +70,6 @@ class ItemModal extends Component {
                                 <Input type='text' name='description' id='description' placeholder='Add an Amazing Description' onChange={this.onChange} />
                                 <br/>
                                 <Input type='file' name='productImage' id='productImage' onChange={this.handleFile} />
-                                <div>{Math.round(this.state.loading, 2)} %</div>
                                 <Button color='dark' style={{marginTop: '2rem'}} block>Add Item</Button>
                             </FormGroup>
                         </Form>

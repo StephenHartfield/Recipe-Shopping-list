@@ -2,4 +2,6 @@
     background: no-repeat fixed;
     background-image: url('./Hota/MPics/grey.jpg');
     background-size: cover;
+    border-top: solid pink 5px;
+    border-bottom: solid pink 5px;
 }

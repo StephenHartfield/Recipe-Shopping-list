@@ -67,13 +67,13 @@ router.get('/', (req, res, next) => {
 });
 //post method
 //router.post('/', checkAuth, upload.single('productImage'), (req, res, next) => {  })
-router.post("/", upload.single('productImage'), (req, res, next) => {
+router.post("/", (req, res, next) => {
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
-        productImage: req.file.path
+        //productImage: req.file.path
     });
     console.log(req.body);
     product.save()
@@ -107,27 +107,29 @@ router.get('/:productId', (req, res, next) => {
         .select('-__v')
         .exec()
         .then(doc => {
-            if (doc) {
-                res.status(200).json({
-                    product: {
-                        name: doc.name,
-                        price: doc.price,
-                        productImage: doc.productImage.replace("\\", "/")
-                    },
-                    request: {
-                        type: 'GET',
-                        description: 'See all products',
-                        url: '/products'
-                    }
+            res.status(200).json(doc)
+                //     if (doc) {
+                //         res.status(200).json({
+                //             product: {
+                //                 name: doc.name,
+                //                 price: doc.price,
+                //                 productImage: doc.productImage.replace("\\", "/")
+                //             },
+                //             request: {
+                //                 type: 'GET',
+                //                 description: 'See all products',
+                //                 url: '/products'
+                //             }
+                //         })
+                //     } else {
+                //         res.status(404).json({ message: 'No valid entry found for provided ID' });
+                //     }
+                // })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({ error: err })
                 })
-            } else {
-                res.status(404).json({ message: 'No valid entry found for provided ID' });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ error: err })
-        })
+        });
 });
 
 router.patch('/:productId', checkAuth, (req, res, next) => {

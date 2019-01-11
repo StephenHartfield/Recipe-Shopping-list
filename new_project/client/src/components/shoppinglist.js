@@ -36,7 +36,7 @@ class ShoppingList extends Component {
         const { items } = this.props.item;
         return (
             <div>
-            <Container style={{paddingTop: '50px'}}>
+            <Container style={{padding: '50px 0 50px 0'}}>
             	{/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
 		        	<TransitionGroup className="shopping-list">
 		            		<Row>
