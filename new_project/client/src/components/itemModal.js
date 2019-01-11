@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemaction.js';
-import axios from 'axios'
 
 //form will always a piece of state in component, not redux
 //this component could be considered a container, since it is solely redux. normally it might be in a containers folder
@@ -14,7 +13,6 @@ class ItemModal extends Component {
             name: '',
             price: '',
             description: '',
-            loading: 0,
             productImage: null
         }
     }
@@ -32,7 +30,6 @@ class ItemModal extends Component {
     }
 
     handleFile = (e) => {
-        console.log('selected file', e.target.files[0]);
         this.setState({
             productImage: e.target.files[0]
         })
@@ -43,21 +40,9 @@ class ItemModal extends Component {
         const newItem = {
             name: this.state.name,
             price: this.state.price,
-            description: this.state.description
+            description: this.state.description,
+            productImage: this.state.productImage
         }
-        const data = new FormData();
-        data.append('productImage', this.state.productImage, this.state.productImage.name)
-        axios.post('/products/', data, {
-                headers: {
-                    'accept': 'application/json',
-                    'Accept-Language': 'en-US, en;q=0.8',
-                    'Content-Type': `multiport/form-data; boundary=${data._boundary}`
-                }
-            })
-            .then(res => {
-                let filename = res.data;
-                console.log('filename', filename);
-            });
         //newItem.append('file', this.state.productImage, this.state.productImage.name)
 
         //Add item via addItem action
@@ -85,7 +70,7 @@ class ItemModal extends Component {
                                 <br/>
                                 <Input type='text' name='description' id='description' placeholder='Add an Amazing Description' onChange={this.onChange} />
                                 <br/>
-                                <Input type='file' name='productImage' id='' onChange={this.handleFile} />
+                                <Input type='file' name='productImage' id='productImage' onChange={this.handleFile} />
                                 <div>{Math.round(this.state.loading, 2)} %</div>
                                 <Button color='dark' style={{marginTop: '2rem'}} block>Add Item</Button>
                             </FormGroup>
