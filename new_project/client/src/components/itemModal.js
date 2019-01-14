@@ -37,15 +37,20 @@ class ItemModal extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const newItem = {
-            name: this.state.name,
-            price: this.state.price,
-            description: this.state.description
-        }
+        // const newItem = {
+        //     name: this.state.name,
+        //     price: this.state.price,
+        //     description: this.state.description
+        // }
+        let newData = new FormData();
+        newData.append('productImage', this.state.productImage, this.state.productImage.name);
+        newData.append('name', this.state.name);
+        newData.append('price', this.state.price);
+        newData.append('description', this.state.description);
         //newItem.append('file', this.state.productImage, this.state.productImage.name)
 
         //Add item via addItem action
-        this.props.addItem(newItem);
+        this.props.addItem(newData);
 
         //Close the modal
         this.toggle();
@@ -60,7 +65,7 @@ class ItemModal extends Component {
                         Add To Shopping List
                     </ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.onSubmit}>
+                        <Form onSubmit={this.onSubmit} enctype='multipart/form-data'>
                             <FormGroup>
                                 <Label for='item'>Item</Label>
                                 <Input type='text' name='name' id='item' placeholder='Add Item Name' onChange={this.onChange} />

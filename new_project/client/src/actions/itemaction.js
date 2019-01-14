@@ -21,7 +21,7 @@ export const deleteItem = id => dispatch => {
 };
 
 export const addItem = (item) => dispatch => {
-    axios.post('/products/', item)
+    axios.post('/products', item)
         .then(res => {
             dispatch({
                 type: ADD_ITEM,

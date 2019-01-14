@@ -27,14 +27,16 @@ class AppNavbar extends Component {
         })
     }
 
+
+
     render() {
             return (
                     <div>  
-			<Navbar expand='sm' className='topb'>
+			<Navbar expand='sm' color='white' light>
 				<NavbarBrand href='/home' style={{width: '100px', display: 'inline'}}><img src={photos(17)} className='thisimg' alt="" /></NavbarBrand>
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
-					<Nav className='ml-auto firstT' navbar>
+					<Nav className='ml-auto' navbar>
 						<NavItem className='tab'>
 							<NavLink to='/home' activeStyle={tabStyle}> Home </NavLink>
 						</NavItem>
