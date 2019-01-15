@@ -19,7 +19,7 @@ class App extends Component {
             <Provider store={store}> 
 	    	<BrowserRouter>
 				<div>	
-					<AppNavbar />
+					<AppNavbar true='true'/>
 						<div>			
 							<Switch>
 								<Route path='/home' component={Home} exact />
@@ -29,7 +29,6 @@ class App extends Component {
 							</Switch>
 						</div>
 						<LinksExit />
-					<AppNavbar />
 				</div>
 			</BrowserRouter>
 	    </Provider>

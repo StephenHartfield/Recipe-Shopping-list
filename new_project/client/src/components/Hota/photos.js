@@ -16,28 +16,26 @@ import Image16 from './MPics/16.jpeg'
 import Image17 from './MPics/17.jpeg'
 import Image18 from './MPics/L1.jpeg'
 import Image19 from './MPics/L2.jpeg'
-import ImageA from './MPics/about.jpeg'
+import ImageA from './MPics/self2.jpeg'
 import ImageS from './MPics/selfie.jpeg'
 
 var photo = [null, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, ImageA, ImageS];
 
 export function photos(num) {
-	return photo[num];
+    return photo[num];
 }
 
 export function getNum(num) {
-	if(num < 0) {
-		num = photo.length-1;
-	}
-	else if(num > photo.length-1) {
-		num = 0;
-	}
-	return num
+    if (num < 0) {
+        num = photo.length - 1;
+    } else if (num > photo.length - 1) {
+        num = 0;
+    }
+    return num
 }
 
 export function statusUpdate(state) {
-	if(state === ' PLAY ') {
-		return state = ' PAUSE '
-	}
-	else return state = ' PLAY ' 
+    if (state === ' PLAY ') {
+        return state = ' PAUSE '
+    } else return state = ' PLAY '
 }

@@ -18,6 +18,6 @@
 .aboutimage {
     border-radius: 20px;
     width: 100%;
-    border: solid pink 5px;
+    height: 100%;border: solid pink 5px;
     box-shadow: 10px 10px 10px;
 }

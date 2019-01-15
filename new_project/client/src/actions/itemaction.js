@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
+import { GET_ITEMS, PATCH_ITEM, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
 
 
 export const getItems = () => dispatch => {
@@ -12,8 +12,23 @@ export const getItems = () => dispatch => {
         }))
 };
 
+export const updateItem = (id, item) => dispatch => {
+    axios
+        .patch(`/products/${id}`, item)
+        .then(res => dispatch({
+            type: PATCH_ITEM,
+            payload: res.data
+        }))
+    axios.get('/products')
+        .then(res => dispatch({
+            type: GET_ITEMS,
+            payload: res.data
+        }))
+};
+
 export const deleteItem = id => dispatch => {
-    axios.delete(`/products/${id}`)
+    axios
+        .delete(`/products/${id}`)
         .then(res => dispatch({
             type: DELETE_ITEM,
             payload: id
@@ -21,7 +36,8 @@ export const deleteItem = id => dispatch => {
 };
 
 export const addItem = (item) => dispatch => {
-    axios.post('/products', item)
+    axios
+        .post('/products', item)
         .then(res => {
             dispatch({
                 type: ADD_ITEM,

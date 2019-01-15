@@ -62,10 +62,10 @@ class ItemModal extends Component {
                 <Button style={{marginBottom: '2rem', margin: '30px 0 0 50px'}} onClick={this.toggle}>Add Item</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>
-                        Add To Shopping List
+                        Add To Store
                     </ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.onSubmit} enctype='multipart/form-data'>
+                        <Form onSubmit={this.onSubmit}>
                             <FormGroup>
                                 <Label for='item'>Item</Label>
                                 <Input type='text' name='name' id='item' placeholder='Add Item Name' onChange={this.onChange} />

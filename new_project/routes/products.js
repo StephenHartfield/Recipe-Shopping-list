@@ -132,7 +132,7 @@ router.get('/:productId', (req, res, next) => {
         });
 });
 
-router.patch('/:productId', checkAuth, (req, res, next) => {
+router.patch('/:productId', (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
     //must update with array of JSON data
@@ -143,11 +143,12 @@ router.patch('/:productId', checkAuth, (req, res, next) => {
         .exec()
         .then(result => {
             res.status(200).json({
-                message: 'Product updated successfully!',
-                request: {
-                    type: 'GET',
-                    url: '/products/' + id
-                }
+                result
+                // message: 'Product updated successfully!',
+                // request: {
+                //     type: 'GET',
+                //     url: '/products/' + id
+                // }
             });
         })
         .catch(err => {
