@@ -5,6 +5,17 @@ import { connect } from 'react-redux';
 import { getItems, deleteItem, updateItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
 
+let tallImg = {
+    borderRadius: '20px',
+    position: 'relative',
+    top: '-70px'
+}
+
+let shortImg = {
+    borderRadius: '20px'
+}
+
+let imgStyle = {};
 
 class ShoppingList extends Component {
     //shortcut for constructor(props){ super(props); this.state = {} } is just state = {} but this shortcut might not receive props
@@ -75,6 +86,23 @@ class ShoppingList extends Component {
         })
     }
 
+    onImgLoad = ({ target: img }) => {
+        if (img.naturalHeight >= 601) {
+            // doesn't work -> img.style = { { postion: 'relative', top: '-70px', borderRadius: '20px' } }
+            img.style.position = 'relative';
+            img.style.top = '-70px';
+            img.style.borderRadius = '20px';
+        }
+        if (img.naturalHeight >= 500 && img.naturalHeight <= 600) {
+            img.style.position = 'relative';
+            img.style.top = '-30px';
+            img.style.borderRadius = '20px';
+        } else {
+            img.style.borderRadius = '20px';
+        }
+        console.log(img.naturalHeight);
+    }
+
     render() {
         const { items } = this.props.item;
         return (
@@ -87,8 +115,11 @@ class ShoppingList extends Component {
 			            		{items.map((item) => (
 				            		<CSSTransition key={item._id} timeout={1000} classNames='fade'>
 			            				<Col md={4} sm={{size: 6, offset: 0}} xs={{size: 'auto', offset: 2}} style={{marginTop: '50px', marginBottom: '50px'}}>
-				            				<Card style={{height: '500px', maxWidth: '300px', backgroundColor: '#F5F5F5', border: 'solid pink 3px', borderRadius: '20px', boxShadow: '10px 10px 10px'}}>
-										        <div style={{height: '200px', overflow: 'hidden', borderRadius: '20px'}}><CardImg width='100%' style={{backgroundColor: 'white', borderRadius: '20px'}} className='img img-responsive' src={item.productImage} />
+				            				<Card style={{height: '500px', width: '90%', backgroundColor: '#F5F5F5', border: 'solid pink 3px', borderRadius: '20px', boxShadow: '10px 10px 10px'}}>
+										        <div style={{height: '200px', overflow: 'hidden', borderRadius: '20px'}}>
+										         
+										        <CardImg src={item.productImage} width='100%' onLoad={this.onImgLoad}  />  
+										        
 										        </div>
 										        <CardBody>
 										          <CardTitle style={{height: '40px'}} className='text-center'><strong>{item.name}</strong></CardTitle>
@@ -111,9 +142,10 @@ class ShoppingList extends Component {
         {/* below is not needed in this application, but is normal way to map items in state and remember items is defined under render function 
             {items.map((item, i) => {return (<p key={i}>{item.name}</p>)})}	*/}
             </Container>
+            
             <Modal isOpen={this.state.modal} toggle={this.onUpdateClick}>
                     <ModalHeader toggle={this.onUpdateClick}>
-                        Update to: <strong>{this.state.specItem.name}</strong>
+                        <span style={{color: 'blue'}}>Update</span> to: <strong>{this.state.specItem.name}</strong>
                     </ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>

@@ -15,11 +15,13 @@
     text-align: center;
     z-index: -1;
     border-bottom: solid pink 5px;
+    border-top: solid pink 5px;
 }
 
 .container {
     text-align: center;
-    padding: 200px 0 0 0;
+    padding: 100px 0 0 0;
+    margin: 70px;
 }
 
 .body {

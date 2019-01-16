@@ -135,6 +135,12 @@ router.get('/:productId', (req, res, next) => {
 router.patch('/:productId', (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
+    //try for incoming data that doesn't need to be in an array:
+    // for(const key in req.body) {
+    // 	updateOps[key] = req.body[key];
+    // }
+    // or for(const key of Object.keys(req.body)) { updateOps[key] = req.body[key]} for simple 
+
     //must update with array of JSON data
     for (const ops of req.body) {
         updateOps[ops.propsName] = ops.value;

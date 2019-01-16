@@ -52,7 +52,7 @@ class Home extends Component {
 						<h2 className="secondary">- Exodus 31:6</h2>
 					</div>
 				</div>
-					<div className='row' style={{backgroundColor: 'white', margin: '0px'}}>
+					<div className='row' style={{backgroundColor: 'white', margin: '0px', borderTop: 'solid pink 5px'}}>
 						<div className="container" style={{paddingTop: '50px'}}>
 							<h2 className="body">WELCOME</h2>
 							<h2 className="body" style={{marginBottom: '50px'}}>Check out what's new.</h2>
