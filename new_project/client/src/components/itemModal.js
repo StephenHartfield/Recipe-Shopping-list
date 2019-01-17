@@ -43,7 +43,9 @@ class ItemModal extends Component {
         //     description: this.state.description
         // }
         let newData = new FormData();
-        newData.append('productImage', this.state.productImage, this.state.productImage.name);
+        if (this.state.productImage) {
+            newData.append('productImage', this.state.productImage, this.state.productImage.name);
+        }
         newData.append('name', this.state.name);
         newData.append('price', this.state.price);
         newData.append('description', this.state.description);
@@ -67,13 +69,16 @@ class ItemModal extends Component {
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for='item'>Item</Label>
-                                <Input type='text' name='name' id='item' placeholder='Add Item Name' onChange={this.onChange} />
+                                <Label for='name'>Name</Label>
+                                <Input type='text' name='name' id='name' placeholder='Add Item Name' onChange={this.onChange} />
                                 <br/>
-                                <Input type='number' step='0.01' name='price' id='price' placeholder='Add Price' onChange={this.onChange} />
+                                <Label for='price'>Price</Label>
+                                <Input type='number' step='0.01' name='price' id='price' placeholder='Add Item Price' onChange={this.onChange} />
                                 <br/>
+                                <Label for='description'>Description</Label>
                                 <Input type='text' name='description' id='description' placeholder='Add an Amazing Description' onChange={this.onChange} />
                                 <br/>
+                                <Label for='productImage'>Image</Label>
                                 <Input type='file' name='productImage' id='productImage' onChange={this.handleFile} />
                                 <Button color='dark' style={{marginTop: '2rem'}} block>Add Item</Button>
                             </FormGroup>

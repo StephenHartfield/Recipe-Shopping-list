@@ -4,18 +4,7 @@ import { Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTit
 import { connect } from 'react-redux';
 import { getItems, deleteItem, updateItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
-
-let tallImg = {
-    borderRadius: '20px',
-    position: 'relative',
-    top: '-70px'
-}
-
-let shortImg = {
-    borderRadius: '20px'
-}
-
-let imgStyle = {};
+import './shoppinglist.css'
 
 class ShoppingList extends Component {
     //shortcut for constructor(props){ super(props); this.state = {} } is just state = {} but this shortcut might not receive props
@@ -107,15 +96,15 @@ class ShoppingList extends Component {
         const { items } = this.props.item;
         return (
             <div>
-            <Container style={{padding: '50px 0 50px 0'}}>
+            <Container className='list-container'>
             	{/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
 		        	<TransitionGroup className="shopping-list">
 		            		<Row>
 			            		<CardDeck>
 			            		{items.map((item) => (
-				            		<CSSTransition key={item._id} timeout={1000} classNames='fade'>
-			            				<Col md={4} sm={{size: 6, offset: 0}} xs={{size: 'auto', offset: 2}} style={{marginTop: '50px', marginBottom: '50px'}}>
-				            				<Card style={{height: '500px', width: '90%', backgroundColor: '#F5F5F5', border: 'solid pink 3px', borderRadius: '20px', boxShadow: '10px 10px 10px'}}>
+				            		<CSSTransition timeout={1000} classNames='fade'>
+			            				<Col key={item._id} md={4} sm={{size: 6, offset: 0}} xs={{size: 'auto', offset: 2}} className='single-col'>
+				            				<Card className='card'>
 										        <div style={{height: '200px', overflow: 'hidden', borderRadius: '20px'}}>
 										         
 										        <CardImg src={item.productImage} width='100%' onLoad={this.onImgLoad}  />  
@@ -125,7 +114,7 @@ class ShoppingList extends Component {
 										          <CardTitle style={{height: '40px'}} className='text-center'><strong>{item.name}</strong></CardTitle>
 										          <CardSubtitle><Badge pill> ${(item.price).toFixed(2)}</Badge></CardSubtitle>
 										          <CardText style={{height: '120px'}}>{item.description}</CardText>
-										          <hr style={{backgroundColor: 'white'}}/>
+										          <hr/>
 										          <Button className="remove-btn" color='danger' size='xs' 
 				            					onClick={this.onDeleteClick.bind(this, item._id)}>&times;</Button>
 										          <Button className="remove-btn" color='primary' size='xs' 
@@ -150,14 +139,15 @@ class ShoppingList extends Component {
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for='item'>Item</Label>
+                                <Label for='item'>Name</Label>
                                 <Input type='text' name='name' id='item' placeholder={this.state.specItem.name} onChange={this.onChange} />
                                 <br/>
+                                <Label for='price'>Price</Label>
                                 <Input type='number' step='0.01' name='price' id='price' placeholder={this.state.specItem.price} onChange={this.onChange} />
                                 <br/>
+                                <Label for='description'>Description</Label>
                                 <Input type='text' name='description' id='description' placeholder={this.state.specItem.description} onChange={this.onChange} />
                                 <br/>
-                                <Input type='file' name='productImage' id='productImage' onChange={this.handleFile} />
                                 <Button color='primary' style={{marginTop: '2rem'}} block>Update Item</Button>
                             </FormGroup>
                         </Form>
