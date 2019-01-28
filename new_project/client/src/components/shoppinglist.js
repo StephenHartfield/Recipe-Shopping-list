@@ -4,17 +4,19 @@ import { Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTit
 import { connect } from 'react-redux';
 import { getItems, deleteItem, updateItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
-import './shoppinglist.css'
+import './shoppinglist.scss'
+import { NavLink } from 'react-router-dom';
 
 class ShoppingList extends Component {
     //shortcut for constructor(props){ super(props); this.state = {} } is just state = {} but this shortcut might not receive props
     state = {
         modal: false,
-        specItem: {},
         name: '',
         price: '',
         description: '',
-        productImage: null
+        productImage: null,
+        nameStick: '',
+        getItem: ''
     }
 
     componentWillMount() {
@@ -26,15 +28,15 @@ class ShoppingList extends Component {
     }
 
     // enterItem = () => {
-    // 	const name = prompt('Enter Item');
-    // 	if(name) {
-    // 		this.setState({
-    // 			//or without curly braces after this.setState( use state => {}
-    // 				items: this.state.items.concat({id: uuid(), name})
-    // 			//or items: [...state.items, {id: uuid(), name}]
-    // 			//name is an ES6 shortcut, but could read name: name	
-    // 		});
-    // 	}
+    //  const name = prompt('Enter Item');
+    //  if(name) {
+    //      this.setState({
+    //          //or without curly braces after this.setState( use state => {}
+    //              items: this.state.items.concat({id: uuid(), name})
+    //          //or items: [...state.items, {id: uuid(), name}]
+    //          //name is an ES6 shortcut, but could read name: name    
+    //      });
+    //  }
     // }
     onChange = (e) => {
         this.setState({
@@ -49,7 +51,12 @@ class ShoppingList extends Component {
     onUpdateClick = myItem => {
         this.setState({
             modal: !this.state.modal,
-            specItem: myItem
+            nameStick: myItem.name,
+            id: myItem._id,
+            name: myItem.name,
+            price: myItem.price,
+            description: myItem.description,
+            productImage: myItem.productImage
         })
     }
 
@@ -66,12 +73,11 @@ class ShoppingList extends Component {
         if (this.state.description) {
             newData.push({ 'propsName': 'description', 'value': this.state.description })
         }
-        this.props.updateItem(this.state.specItem._id, newData);
+        this.props.updateItem(this.state.id, newData);
 
         //Close the modal
         this.setState({
-            modal: !this.state.modal,
-            specItem: {}
+            modal: !this.state.modal
         })
     }
 
@@ -89,7 +95,12 @@ class ShoppingList extends Component {
         } else {
             img.style.borderRadius = '20px';
         }
-        console.log(img.naturalHeight);
+    }
+
+    onCartHandle = myItem => {
+        this.setState({
+            getItem: myItem
+        })
     }
 
     render() {
@@ -97,63 +108,78 @@ class ShoppingList extends Component {
         return (
             <div>
             <Container className='list-container'>
-            	{/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
-		        	<TransitionGroup className="shopping-list">
-		            		<Row>
-			            		<CardDeck>
-			            		{items.map((item) => (
-				            		<CSSTransition timeout={1000} classNames='fade'>
-			            				<Col key={item._id} md={4} sm={{size: 6, offset: 0}} xs={{size: 'auto', offset: 2}} className='single-col'>
-				            				<Card className='card'>
-										        <div style={{height: '200px', overflow: 'hidden', borderRadius: '20px'}}>
-										         
-										        <CardImg src={item.productImage} width='100%' onLoad={this.onImgLoad}  />  
-										        
-										        </div>
-										        <CardBody>
-										          <CardTitle style={{height: '40px'}} className='text-center'><strong>{item.name}</strong></CardTitle>
-										          <CardSubtitle><Badge pill> ${(item.price).toFixed(2)}</Badge></CardSubtitle>
-										          <CardText style={{height: '120px'}}>{item.description}</CardText>
-										          <hr/>
-										          <Button className="remove-btn" color='danger' size='xs' 
-				            					onClick={this.onDeleteClick.bind(this, item._id)}>&times;</Button>
-										          <Button className="remove-btn" color='primary' size='xs' 
-				            					onClick={this.onUpdateClick.bind(this, item)}>
-				            					<i className='fas fa-pen'></i></Button>
-										        </CardBody>
-										    </Card>
-			            				</Col>
-				            		</CSSTransition>
-				            	))}
-			            		</CardDeck>
-		            		</Row>
-		        	</TransitionGroup>
+                {/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
+                <CardDeck className='card-deck'>
+                    {items.map((item) => (
+                    <div className='flexing'>
+                        <Card className='card'>
+                            <div className='img-container'>
+                                <CardImg src={item.productImage} onLoad={this.onImgLoad} />
+                            </div>
+                            <CardBody>
+                                <CardTitle className='card-title'>
+                                    <strong>{item.name}</strong>
+                                </CardTitle>
+                                
+                                <CardSubtitle>
+                                    <Badge pill> ${(item.price).toFixed(2)}</Badge>
+                                </CardSubtitle>
+                                
+                                <CardText className='card-text'>{item.description}</CardText>
+                              
+                                <hr/>
+                              
+                                <Button className="remove-btn" color='danger' size='xs' title='delete'
+                                    onClick={this.onDeleteClick.bind(this, item._id)}>
+                                    &times;
+                                </Button>
+                                
+                                <Button className="update-btn" color='primary' size='xs' title='update'
+                                    onClick={this.onUpdateClick.bind(this, item)}>
+                                    <i className='fas fa-pen'></i>
+                                </Button>
+                            
+                                <Button className="get-btn" color='info' size='xs' title='see single'>
+                                    <NavLink to={`products/${item._id}`}>
+                                        <i className='fas fa-arrow-circle-up single-get'></i>
+                                    </NavLink>
+                                </Button>
+                            
+                                <Button className="get-btn" color='success' size='xs' title='add to cart'
+                                    onClick={this.onCartHandle.bind(this, item)}>
+                                    <i className='fa fa-shopping-cart'></i>
+                                </Button>
+                            </CardBody>
+                        </Card> 
+                    </div>
+                    ))}
+                </CardDeck>
         {/* below is not needed in this application, but is normal way to map items in state and remember items is defined under render function 
-            {items.map((item, i) => {return (<p key={i}>{item.name}</p>)})}	*/}
+            {items.map((item, i) => {return (<p key={i}>{item.name}</p>)})} */}
             </Container>
-            
+        
             <Modal isOpen={this.state.modal} toggle={this.onUpdateClick}>
-                    <ModalHeader toggle={this.onUpdateClick}>
-                        <span style={{color: 'blue'}}>Update</span> to: <strong>{this.state.specItem.name}</strong>
-                    </ModalHeader>
-                    <ModalBody>
-                        <Form onSubmit={this.onSubmit}>
-                            <FormGroup>
-                                <Label for='item'>Name</Label>
-                                <Input type='text' name='name' id='item' placeholder={this.state.specItem.name} onChange={this.onChange} />
-                                <br/>
-                                <Label for='price'>Price</Label>
-                                <Input type='number' step='0.01' name='price' id='price' placeholder={this.state.specItem.price} onChange={this.onChange} />
-                                <br/>
-                                <Label for='description'>Description</Label>
-                                <Input type='text' name='description' id='description' placeholder={this.state.specItem.description} onChange={this.onChange} />
-                                <br/>
-                                <Button color='primary' style={{marginTop: '2rem'}} block>Update Item</Button>
-                            </FormGroup>
-                        </Form>
-                    </ModalBody>
-                </Modal>
-           </div>
+                <ModalHeader toggle={this.onUpdateClick}>
+                    <span color='primary'>Update</span> to: <strong>{this.state.nameStick}</strong>
+                </ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.onSubmit}>
+                        <FormGroup>
+                            <Label for='item'>Name</Label>
+                            <Input type='text' name='name' id='item' value={this.state.name} onChange={this.onChange} />
+                            <br/>
+                            <Label for='price'>Price</Label>
+                            <Input type='number' step='0.01' name='price' id='price' value={this.state.price} onChange={this.onChange} />
+                            <br/>
+                            <Label for='description'>Description</Label>
+                            <Input type='text' name='description' id='description' value={this.state.description} onChange={this.onChange} />
+                            <br/>
+                            <Button color='primary' style={{marginTop: '2rem'}} block>Update Item</Button>
+                        </FormGroup>
+                    </Form>
+                </ModalBody>
+            </Modal>
+            </div>
         );
     }
 }

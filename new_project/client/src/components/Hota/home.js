@@ -3,7 +3,7 @@ import './home.css'
 import ImageTray from './imagepane.js'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
-import { circle, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'reactstrap'
 
 
 const ftitle = ['Too Blessed and Too Anointed', 'Romans 12:12 Wooden Sign 12x12', 'I am with you always']
@@ -46,11 +46,16 @@ class Home extends Component {
 					<ul>{this.state.messages.map((m, i) => {return <li key={i}>{m}</li>})}</ul>
 					<button onClick={this.submitMessage}>Submit</button>
 				</div>*/}
-			<div className='backgBorder'><div className='backg'></div></div>
-					<div style={{marginBottom: '290px'}}>
-						<h1 className="main">Heart of the Artisan</h1>
-						<h2 className="secondary">- Exodus 31:6</h2>
+			<Row>
+				<div className='backgBorder'>
+					<div className='backg'>
+						<div>
+							<h1 className="main">Heart of the Artisan</h1>
+							<h2 className="secondary">- Exodus 31:6</h2>
+						</div>
 					</div>
+				</div>
+			</Row>
 				</div>
 					<div className='row' style={{backgroundColor: 'white', margin: '0px', borderTop: 'solid pink 5px'}}>
 						<div className="container" style={{paddingTop: '50px'}}>
@@ -60,7 +65,7 @@ class Home extends Component {
 								<ImageTray titles={ftitle} photos={first} />
 								<ImageTray titles={stitle} photos={second} />
 							</div>
-							<button className="buttonshop" style={{marginTop: '100px'}}> 
+							<button className="buttonshop"> 
 								<NavLink to='/Store' className='shoplink'>
 									View Shop 	
 								</NavLink>
