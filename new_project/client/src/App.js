@@ -12,6 +12,7 @@ import { photos } from './components/Hota/photos';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import About from './components/Hota/about.js'
 import LinksExit from './components/Hota/linksexit.js'
+import Product from './components/product.js'
 
 class App extends Component {
     render() {
@@ -25,6 +26,7 @@ class App extends Component {
 								<Route path='/home' component={Home} exact />
 								<Route path='/store' component={StoreLand} />
 								<Route path='/about' component={About} />
+								<Route path='/products/:id' component={Product} />
 								<Route component={Home} />
 							</Switch>
 						</div>

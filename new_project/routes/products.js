@@ -40,25 +40,25 @@ router.get('/', (req, res, next) => {
         //.sort({ date: -1 })
         .then(docs => {
             // const response = {
-            // 	count: docs.length,
-            // 	products: docs.map(doc => {
-            // 		return {
-            // 			name: doc.name,
-            // 			price: doc.price,
-            // 			_id: doc._id,
-            // 			productImage: doc.productImage,
-            // 			request: {
-            // 				type: 'GET',
-            // 				url: '/products/' + doc._id
-            // 			}
-            // 		}
-            // 	})
+            //  count: docs.length,
+            //  products: docs.map(doc => {
+            //      return {
+            //          name: doc.name,
+            //          price: doc.price,
+            //          _id: doc._id,
+            //          productImage: doc.productImage,
+            //          request: {
+            //              type: 'GET',
+            //              url: '/products/' + doc._id
+            //          }
+            //      }
+            //  })
             // }
-            //	if(doc.length >= 0) {
+            //  if(doc.length >= 0) {
             res.status(200).json(docs);
-            //	} else {
-            //		res.status(404).json({message: 'no entries found'})
-            //	}
+            //  } else {
+            //      res.status(404).json({message: 'no entries found'})
+            //  }
         })
         .catch(err => {
             console.log(err);
@@ -86,11 +86,11 @@ router.post("/", upload.single('productImage'), (req, res, next) => {
                 // createdProduct: {
                 //name: result.name
                 //price: result.price,
-                // 	_id: result._id,
+                //  _id: result._id,
                 //productImage: result.productImage,
                 // request: {
-                // 	type: 'GET',
-                // 	url: '/products/' + result._id
+                //  type: 'GET',
+                //  url: '/products/' + result._id
                 // }
                 //}
             );
@@ -107,29 +107,23 @@ router.get('/:productId', (req, res, next) => {
         .select('-__v')
         .exec()
         .then(doc => {
-            res.status(200).json(doc)
-                //     if (doc) {
-                //         res.status(200).json({
-                //             product: {
-                //                 name: doc.name,
-                //                 price: doc.price,
-                //                 productImage: doc.productImage.replace("\\", "/")
-                //             },
-                //             request: {
-                //                 type: 'GET',
-                //                 description: 'See all products',
-                //                 url: '/products'
-                //             }
-                //         })
-                //     } else {
-                //         res.status(404).json({ message: 'No valid entry found for provided ID' });
-                //     }
-                // })
-                .catch(err => {
-                    console.log(err);
-                    res.status(500).json({ error: err })
+            // res.status(200).json(doc)
+            console.log(doc.productImage);
+            if (doc) {
+                res.status(200).json({
+                    name: doc.name,
+                    price: doc.price,
+                    description: doc.description,
+                    productImage: doc.productImage.replace(/\/uploads\//, " ")
                 })
-        });
+            } else {
+                res.status(404).json({ message: 'No valid entry found for provided ID' });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err })
+        })
 });
 
 router.patch('/:productId', (req, res, next) => {
@@ -137,7 +131,7 @@ router.patch('/:productId', (req, res, next) => {
     const updateOps = {};
     //try for incoming data that doesn't need to be in an array:
     // for(const key in req.body) {
-    // 	updateOps[key] = req.body[key];
+    //  updateOps[key] = req.body[key];
     // }
     // or for(const key of Object.keys(req.body)) { updateOps[key] = req.body[key]} for simple 
 

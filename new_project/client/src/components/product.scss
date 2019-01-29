@@ -1,0 +1,47 @@
+.product-full {
+    background: no-repeat fixed;
+    background-image: url('./Hota/MPics/grey.jpg');
+    background-size: cover;
+    border-top: solid pink 5px;
+    border-bottom: solid pink 5px;
+}
+
+.product-container {
+    padding-top: 0px;
+}
+
+.product-line {
+    margin-top: 50px;
+}
+
+.product-details {
+    border: solid pink 3px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.product-price {
+    color: green;
+}
+
+.button-shop {
+    transition: background-color .5s;
+    background-color: #deb887;
+    border-radius: 10px;
+    margin: 0 auto;
+
+    &:hover {
+        background-color: #663333;
+    }
+}
+
+.shop-link {
+    text-decoration: none;
+    color: black;
+    transition: color .5s;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}

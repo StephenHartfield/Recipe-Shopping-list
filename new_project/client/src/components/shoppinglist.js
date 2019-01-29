@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Badge, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, CardFooter, Badge, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'
 import { connect } from 'react-redux';
 import { getItems, deleteItem, updateItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
@@ -127,8 +127,8 @@ class ShoppingList extends Component {
                                 
                                 <CardText className='card-text'>{item.description}</CardText>
                               
-                                <hr/>
-                              
+                            </CardBody>
+                            <CardFooter>
                                 <Button className="remove-btn" color='danger' size='xs' title='delete'
                                     onClick={this.onDeleteClick.bind(this, item._id)}>
                                     &times;
@@ -145,11 +145,11 @@ class ShoppingList extends Component {
                                     </NavLink>
                                 </Button>
                             
-                                <Button className="get-btn" color='success' size='xs' title='add to cart'
+                                <Button className="cart-btn" color='success' size='xs' title='add to cart'
                                     onClick={this.onCartHandle.bind(this, item)}>
                                     <i className='fa fa-shopping-cart'></i>
                                 </Button>
-                            </CardBody>
+                            </CardFooter>
                         </Card> 
                     </div>
                     ))}
