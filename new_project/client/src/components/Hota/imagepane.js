@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {photos} from './photos.js'
-import {Col, Row} from 'reactstrap'
-import './home.css'
+import { photos } from './photos.js'
+import { Col, Row } from 'reactstrap'
+import './home.scss'
 
 class ImageTray extends Component {
-	constructor(props){
-		super(props);
-	}
+    constructor(props) {
+        super(props);
+    }
 
-	render(){
-		return(
-			<div>
+    render() {
+        return (
+            <div>
 				<Row>
 					<Col md={4} className='pic'>
 						<img src={photos(this.props.photos[0])} title={this.props.titles[0]} className='imgS1' />
@@ -23,8 +23,8 @@ class ImageTray extends Component {
 					</Col>
 				</Row>
 			</div>
-		);	
-	}
+        );
+    }
 }
 
 export default ImageTray;

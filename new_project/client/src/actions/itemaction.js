@@ -14,9 +14,8 @@ export const getItems = () => dispatch => {
 
 export const getItem = id => dispatch => {
     dispatch(setItemsLoading());
-    var newId = id.slice(10);
     axios
-        .get(`/products/${newId}`)
+        .get(`/products/${id}`)
         .then(res => dispatch({
             type: GET_ITEM,
             payload: res.data

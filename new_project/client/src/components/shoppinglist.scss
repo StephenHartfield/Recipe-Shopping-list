@@ -1,5 +1,6 @@
 .list-container {
-    padding: 50px 0 50px 0;
+    padding: 0px 0 50px 0;
+    margin-top: 0px !important;
 }
 
 .card-deck {
@@ -36,6 +37,9 @@
     border: solid #ff4d94 3px !important;
 }
 
+.card-text {
+    margin-bottom: 100px;
+}
 
 .remove-btn {
     margin-right: 5px;

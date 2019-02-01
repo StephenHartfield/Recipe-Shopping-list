@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './home.css'
+import './home.scss'
+import axios from 'axios';
 import ImageTray from './imagepane.js'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 const ftitle = ['Too Blessed and Too Anointed', 'Romans 12:12 Wooden Sign 12x12', 'I am with you always']
@@ -14,6 +15,12 @@ const second = [8, 4, 11];
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.state = ({
+            modal: false,
+            name: '',
+            email: '',
+            message: '',
+        })
         /*		this.state = ({
         			input: '',
         			messages: []
@@ -35,6 +42,31 @@ class Home extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         document.title = 'Heart of the Artisan | Home'
+    }
+
+    modalToggle = () => {
+        this.setState({
+            modal: !this.state.modal
+        })
+    }
+
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        const reqItem = {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
+        }
+        console.log(reqItem);
+        axios.post('/send', reqItem);
+
+        this.modalToggle();
     }
 
     render() {
@@ -70,10 +102,31 @@ class Home extends Component {
 									View Shop 	
 								</NavLink>
 							</button><br/><br/>
-							<p style={{marginBottom: '0px'}}>Or</p><br/>
-							<button className="buttonrequest shoplink" style={{marginBottom: '40px'}}> Request Custom Order </button>
+							<p>Or</p>
+							<button className="buttonrequest" onClick={this.modalToggle}> Contact Request </button>
 						</div>
 					</div>
+					<Modal isOpen={this.state.modal} toggle={this.modalToggle}>
+	                    <ModalHeader toggle={this.modalToggle}>
+	                        Contact Request
+	                    </ModalHeader>
+	                    <ModalBody>
+	                        <Form onSubmit={this.onSubmit}>
+	                            <FormGroup>
+	                                <Label for='name'>Name</Label>
+	                                <Input type='text' name='name' id='name' placeholder='Your Name' onChange={this.onChange} />
+	                                <br/>
+	                                <Label for='email'>Email</Label>
+	                                <Input type='text' name='email' id='email' placeholder='Your Email Address' onChange={this.onChange} />
+	                                <br/>
+	                                <Label for='message'>Request/Message</Label>
+	                                <textarea rows='5' cols='63' name='message' id='message' placeholder='Your Request or Message' onChange={this.onChange} />
+	                                <br/>
+	                                <Button className='contact-btn' block>Send Request</Button>
+	                            </FormGroup>
+	                        </Form>
+	                    </ModalBody>
+                </Modal>
 			</div>
         )
     }

@@ -114,7 +114,7 @@ router.get('/:productId', (req, res, next) => {
                     name: doc.name,
                     price: doc.price,
                     description: doc.description,
-                    productImage: doc.productImage.replace(/\/uploads\//, " ")
+                    productImage: doc.productImage
                 })
             } else {
                 res.status(404).json({ message: 'No valid entry found for provided ID' });
