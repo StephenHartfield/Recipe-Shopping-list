@@ -3,6 +3,11 @@
     width: 100%;
 }
 
+.links {
+    margin: 50px 0 5px 0;
+    text-align: center;
+}
+
 .faceicon {
     text-decoration: none;
     color: darkblue;

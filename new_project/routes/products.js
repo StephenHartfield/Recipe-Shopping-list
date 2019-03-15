@@ -39,27 +39,27 @@ router.get('/', (req, res, next) => {
         //descending sort order
         //.sort({ date: -1 })
         .then(docs => {
-            // const response = {
-            //  count: docs.length,
-            //  products: docs.map(doc => {
-            //      return {
-            //          name: doc.name,
-            //          price: doc.price,
-            //          _id: doc._id,
-            //          productImage: doc.productImage,
-            //          request: {
-            //              type: 'GET',
-            //              url: '/products/' + doc._id
-            //          }
-            //      }
-            //  })
-            // }
-            //  if(doc.length >= 0) {
             res.status(200).json(docs);
-            //  } else {
-            //      res.status(404).json({message: 'no entries found'})
-            //  }
         })
+        // const response = {
+        //  count: docs.length,
+        //  products: docs.map(doc => {
+        //      return {
+        //          name: doc.name,
+        //          price: doc.price,
+        //          _id: doc._id,
+        //          productImage: doc.productImage,
+        //          request: {
+        //              type: 'GET',
+        //              url: '/products/' + doc._id
+        //          }
+        //      }
+        //  })
+        // }
+        //  if(doc.length >= 0) {
+        //  } else {
+        //      res.status(404).json({message: 'no entries found'})
+        //  }
         .catch(err => {
             console.log(err);
             res.status(500).json({ error: err });
@@ -107,15 +107,8 @@ router.get('/:productId', (req, res, next) => {
         .select('-__v')
         .exec()
         .then(doc => {
-            // res.status(200).json(doc)
-            console.log(doc.productImage);
             if (doc) {
-                res.status(200).json({
-                    name: doc.name,
-                    price: doc.price,
-                    description: doc.description,
-                    productImage: doc.productImage
-                })
+                res.status(200).json(doc);
             } else {
                 res.status(404).json({ message: 'No valid entry found for provided ID' });
             }

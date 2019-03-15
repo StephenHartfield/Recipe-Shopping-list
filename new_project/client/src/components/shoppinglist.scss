@@ -20,7 +20,7 @@
     max-height: 200px;
 }
 
-.card {
+.cardsh {
     border: solid pink 3px !important;
     border-radius: 20px !important;
     transition: transform .5s, box-shadow .5s, background-color .5s;
@@ -29,7 +29,7 @@
     box-shadow: 10px 10px 10px;
 }
 
-.card:hover {
+.cardsh:hover {
     transform: scale(1.08);
     box-shadow: 16px 16px 16px;
     background-color: #e6e6e6;

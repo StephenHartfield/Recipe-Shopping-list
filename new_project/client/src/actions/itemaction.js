@@ -16,10 +16,12 @@ export const getItem = id => dispatch => {
     dispatch(setItemsLoading());
     axios
         .get(`/products/${id}`)
-        .then(res => dispatch({
-            type: GET_ITEM,
-            payload: res.data
-        }))
+        .then(res => {
+            dispatch({
+                type: GET_ITEM,
+                payload: res.data
+            });
+        })
 };
 
 export const updateItem = (id, item) => dispatch => {
@@ -57,8 +59,8 @@ export const addItem = (item) => dispatch => {
     // axios
     // .get('/products')
     // .then(res => dispatch({
-    // 	type: GET_ITEMS,
-    // 	payload: res.data
+    //  type: GET_ITEMS,
+    //  payload: res.data
     // }))
 };
 

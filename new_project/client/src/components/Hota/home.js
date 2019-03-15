@@ -89,8 +89,8 @@ class Home extends Component {
 				</div>
 			</Row>
 				</div>
-					<div className='row' style={{backgroundColor: 'white', margin: '0px', borderTop: 'solid pink 5px'}}>
-						<div className="container" style={{paddingTop: '50px'}}>
+					<div className='welcome'>
+						<div className="container">
 							<h2 className="body">WELCOME</h2>
 							<h2 className="body" style={{marginBottom: '50px'}}>Check out what's new.</h2>
 							<div>

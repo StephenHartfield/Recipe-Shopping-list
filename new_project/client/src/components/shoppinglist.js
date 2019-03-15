@@ -97,22 +97,17 @@ class ShoppingList extends Component {
         }
     }
 
-    onCartHandle = myItem => {
-        this.setState({
-            getItem: myItem
-        })
-    }
-
     render() {
         const { items } = this.props.item;
+        console.log(items);
         return (
             <div>
             <Container className='list-container'>
                 {/*<Button color='dark' style={{marginBottom: '2rem'}}>Add Item</Button>*/}
                 <CardDeck className='card-deck'>
                     {items.map((item) => (
-                    <div className='flexing'>
-                        <Card className='card'>
+                    <div className='flexing' key={item._id}>
+                        <Card className='cardsh'>
                             <div className='img-container'>
                                 <CardImg src={item.productImage} onLoad={this.onImgLoad} />
                             </div>
@@ -145,10 +140,6 @@ class ShoppingList extends Component {
                                     </NavLink>
                                 </Button>
                             
-                                <Button className="cart-btn" color='success' size='xs' title='add to cart'
-                                    onClick={this.onCartHandle.bind(this, item)}>
-                                    <i className='fa fa-shopping-cart'></i>
-                                </Button>
                             </CardFooter>
                         </Card> 
                     </div>
@@ -160,7 +151,7 @@ class ShoppingList extends Component {
         
             <Modal isOpen={this.state.modal} toggle={this.onUpdateClick}>
                 <ModalHeader toggle={this.onUpdateClick}>
-                    <span color='primary'>Update</span> to: <strong>{this.state.nameStick}</strong>
+                    Make update to: <strong>{this.state.nameStick}</strong>
                 </ModalHeader>
                 <ModalBody>
                     <Form onSubmit={this.onSubmit}>

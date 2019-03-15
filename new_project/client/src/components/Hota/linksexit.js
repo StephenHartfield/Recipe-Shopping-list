@@ -10,7 +10,7 @@ class LinksExit extends Component {
         const fburl = 'www.facebook.com/margogardner1?ref=br_rs';
         return (
             <div className='container-fluid bg'>
-		        <div style={{margin: '50px 0 5px 0', textAlign: 'center'}}>
+		        <div className='links'>
 					<a href={'http://'+fburl} title={fburl}>
 						<i className="fab fa-facebook-square faceicon"></i>
 					</a>

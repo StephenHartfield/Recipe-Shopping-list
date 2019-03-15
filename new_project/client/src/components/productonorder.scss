@@ -1,0 +1,101 @@
+.pooCard {
+    margin-bottom: 50px;
+    width: 600px;
+    border: solid black 1px;
+    margin: 0 15px 0 15px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.pooHeader {
+    display: flex;
+    background-color: #f2e6d9;
+    height: 50px;
+    font-size: 24px;
+    padding: 5px 10px 0 10px;
+}
+
+.upper {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.lower {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.subtlt {
+    flex-grow: 3;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.pooImg {
+    overflow: hidden;
+    height: 300px;
+    width: 100%;
+    border: solid pink 2px;
+    border-radius: 20px;
+}
+
+.pooTxt {
+    color: black;
+    text-align: center;
+}
+
+.pooTxt2 {
+    margin-bottom: 0px;
+    color: red;
+    text-align: right;
+}
+
+.fa-minus {
+    color: #ffff33;
+    margin-right: 5px;
+    padding: 0px;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.85);
+    }
+}
+
+.fa-plus {
+    color: green;
+    margin: 0 5px 0 5px;
+    padding: 0px;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.85);
+    }
+}
+
+.fa-trash {
+    color: red;
+    margin-left: 5px;
+    padding: 0px;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.85);
+    }
+}
