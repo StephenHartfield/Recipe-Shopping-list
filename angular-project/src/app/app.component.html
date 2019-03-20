@@ -1,8 +1,0 @@
-<!-- selectors example
-<app-servers></app-servers>
-<div app-servers></div> required changing the selector in the component decorator to attribute, so put [] around selector name.
-and <div class='app-servers'></div> works because selector is '.app-servers' notice the period -->
-<app-header (eventSwitch)='mountedComponent = $event'></app-header>
-<recipes *ngIf='mountedComponent==="recipe"'></recipes>
-<app-shoppinglist *ngIf=' mountedComponent==="shopping"'></app-shoppinglist>
-<router-outlet></router-outlet>
