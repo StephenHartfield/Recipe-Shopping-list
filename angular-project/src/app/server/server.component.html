@@ -1,0 +1,47 @@
+<h1>Basics page with notes</h1>
+<p>The {{ 'Server'}} Component is at {{serverNumber}} and is currently {{getStatus()}}</p>
+<br>
+<!-- property binding is done with square brackets - this is recognized by Angular. 
+within quotes, we get property from typescript file. -->
+<button [class]='buttonClass'>Add Something</button>
+<br>
+<!-- event binding is done with parenthesis - this is recognized by Angular.
+within quotes, we get method or property from typescript file.
+click is a built in event, but you can create an event, using EventEmitter and give a custom name -->
+<button (click)='onCreateServer()'>Working Button</button>
+<br>
+<!-- Similar to property binding, string interpolation is taking some string 
+defined in typescript file and printing it out here. -->
+<p>{{serverStatus}}</p>
+<br>
+<!-- input event binding will update on any change -->
+<!--<input type="text" (input)='onInputField($event)' /> -->
+<!-- normal input event binding is on keydown. But, for keyup down the following. -->
+<input type="text" (keyup)='onInputField($event)' />
+<p>{{serverName}}</p>
+<!-- better approach using two-way binding. Notice the value is already filled in with what is hard
+	coded in the typescript file -->
+<input type="text" class='form-control' [(ngModel)]='serverName' />
+<!-- notice also, the event is not needed - we have two-way binding in its place. It is bound to property of class - serverName.  -->
+<!-- Using template reference variable -->
+<input type="text" #box (keyup)='0' placeholder='reference Variable'>
+<p>Reference to input above: {{box.value}}</p>
+<!-- *ngIf is the first directive we will look at. It must be set to a property or method; anything that returns true or false. If true, it will render element. This is a "structural directive" -->
+<p *ngIf='serverStatus'>This is ngIf statement.</p>
+<!-- unlike structural directives, attribute directives do not add or delete, but change elements. -->
+<!-- ngStyle is an attribute directive. Here we will use property binding on it with []brackets. Remember, property binding is simply a one-direction binding of the element's attribute to a property in the typescript file. ngStyle requires a Javascript object inside quotes. -->
+<div [ngStyle]='{backgroundColor: getColor()}'>Server Color</div>
+<!-- normal use of ngStyle. of course, this is inline style and probably not recommended. -->
+<div [ngStyle]='{backgroundColor: "yellow"}'>Normal Color</div>
+<!-- ngClass is another attribute directive. here, we will reference a class defined in the typescript file under styles up in the Component decorator. Like ngStyle, it also requires a Javascript object within quotes. Takes true or false to tell whether to use the class or not. -->
+<div [ngClass]="{online: serverStatus === 'online'}"> This is the ngClass div</div>
+<!-- Here's another structural directive - ngFor. since it is structural, it requires a * like ngIf. -->
+<p><i>To add to list below, type something in the top input field and click working button</i></p>
+<ul *ngFor='let server of servers'>
+  <li>{{server}}</li>
+</ul>
+<!-- To use indexing with ngFor -->
+<p>New list with indexing</p>
+<ul *ngFor='let server of servers; let i = index'>
+  <li>{{i}} {{server}}</li>
+</ul>
