@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 //for routing
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
-app.use("/users", userRoutes);
+//app.use("/users", userRoutes);
 app.use('/send', emailRoutes);
 
 //error handling - catch all error
