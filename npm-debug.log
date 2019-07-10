@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/Stephen/.nvm/versions/node/v6.11.3/bin/node',
+1 verbose cli   '/Users/Stephen/.nvm/versions/node/v6.11.3/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'client' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.3
+4 verbose run-script [ 'preclient', 'client', 'postclient' ]
+5 info lifecycle new_project@1.0.0~preclient: new_project@1.0.0
+6 silly lifecycle new_project@1.0.0~preclient: no script for preclient, continuing
+7 info lifecycle new_project@1.0.0~client: new_project@1.0.0
+8 verbose lifecycle new_project@1.0.0~client: unsafe-perm in lifecycle true
+9 verbose lifecycle new_project@1.0.0~client: PATH: /Users/Stephen/.nvm/versions/node/v6.11.3/lib/node_modules/npm/bin/node-gyp-bin:/Users/Stephen/Heart-of-the-Artisan-master/new_project/node_modules/.bin:/Users/Stephen/.nvm/versions/node/v6.11.3/lib/node_modules/npm/bin/node-gyp-bin:/Users/Stephen/Heart-of-the-Artisan-master/new_project/node_modules/.bin:/Users/Stephen/.nvm/versions/node/v6.11.3/bin:/Users/Stephen/.rvm/gems/ruby-2.6.3/bin:/Users/Stephen/.rvm/gems/ruby-2.6.3@global/bin:/Users/Stephen/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/Stephen/.rvm/gems/ruby-2.6.3/bin:/Users/Stephen/.rvm/gems/ruby-2.6.3@global/bin:/Users/Stephen/.rvm/rubies/ruby-2.6.3/bin:/Users/Stephen/.rvm/bin:/Users/Stephen/.rvm/bin
+10 verbose lifecycle new_project@1.0.0~client: CWD: /Users/Stephen/Heart-of-the-Artisan-master/new_project
+11 silly lifecycle new_project@1.0.0~client: Args: [ '-c', 'npm start --prefix client' ]
+12 silly lifecycle new_project@1.0.0~client: Returned: code: 1  signal: null
+13 info lifecycle new_project@1.0.0~client: Failed to exec client script
+14 verbose stack Error: new_project@1.0.0 client: `npm start --prefix client`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/Stephen/.nvm/versions/node/v6.11.3/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/Stephen/.nvm/versions/node/v6.11.3/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:920:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
+15 verbose pkgid new_project@1.0.0
+16 verbose cwd /Users/Stephen/Heart-of-the-Artisan-master/new_project
+17 error Darwin 18.6.0
+18 error argv "/Users/Stephen/.nvm/versions/node/v6.11.3/bin/node" "/Users/Stephen/.nvm/versions/node/v6.11.3/bin/npm" "run" "client"
+19 error node v6.11.3
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error new_project@1.0.0 client: `npm start --prefix client`
+22 error Exit status 1
+23 error Failed at the new_project@1.0.0 client script 'npm start --prefix client'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the new_project package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     npm start --prefix client
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs new_project
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls new_project
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
