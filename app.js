@@ -42,21 +42,21 @@ app.use("/orders", orderRoutes);
 //app.use("/users", userRoutes);
 app.use('/send', emailRoutes);
 
-//error handling - catch all error
-app.use((req, res, next) => {
-    const error = new Error('Not Found');
-    error.status = 404;
-    next(error);
-})
+// //error handling - catch all error
+// app.use((req, res, next) => {
+//     const error = new Error('Not Found');
+//     error.status = 404;
+//     next(error);
+// })
 
-//error handling - throw errors for indivual cases
-app.use((error, req, res, next) => {
-    res.status(error.status || 500);
-    res.json({
-        error: {
-            message: error.message
-        }
-    })
-})
+// //error handling - throw errors for indivual cases
+// app.use((error, req, res, next) => {
+//     res.status(error.status || 500);
+//     res.json({
+//         error: {
+//             message: error.message
+//         }
+//     })
+// })
 
 module.exports = app;
