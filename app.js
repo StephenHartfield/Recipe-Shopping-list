@@ -7,12 +7,12 @@ const mongoose = require('mongoose');
 //import from orders.js and products.js
 const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
-const userRoutes = require("./routes/users");
+//const userRoutes = require("./routes/users");
 const emailRoutes = require('./routes/emails');
 
 const mongoUrlAdmin = "mongodb+srv://Stephenh1989:" + process.env.Mongo_PW + "@hoa-1fr8b.mongodb.net/test?retryWrites=true"
 //put entire url in a variable instead of just the user and password.
-const newMongoUrl = 'mongodb://Stephenh1989:' + process.env.MONGO_PW + '@hoa-shard-00-00-1fr8b.mongodb.net:27017,hoa-shard-00-01-1fr8b.mongodb.net:27017,hoa-shard-00-02-1fr8b.mongodb.net:27017/test?ssl=true&replicaSet=HOA-shard-0&authSource=admin&retryWrites=true'
+const newMongoUrl = 'mongodb://Stephenh1989:manomite88@hoa-shard-00-00-1fr8b.mongodb.net:27017,hoa-shard-00-01-1fr8b.mongodb.net:27017,hoa-shard-00-02-1fr8b.mongodb.net:27017/test?ssl=true&replicaSet=HOA-shard-0&authSource=admin&retryWrites=true'
 mongoose.connect(newMongoUrl, { useNewUrlParser: true });
 
 mongoose.connection.once('open', () => { console.log('Connection success!'); }).on('error', (err) => { console.log('Connection error:', err); });

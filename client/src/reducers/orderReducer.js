@@ -4,7 +4,7 @@ import {
     ADD_ORDER,
     PATCH_ORDER,
     POST_TOTAL,
-    MINUS,
+    MINUS_TOTAL,
     _TOTAL
 } from '../actions/types'
 

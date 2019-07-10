@@ -11,14 +11,16 @@ class ProductonOrder extends Component {
         props.getOrders();
         this.state = {
             quantity: 1,
-            subtotal: 0
+            subtotal: 0,
+            initialTotal: 0
         }
     }
 
     componentDidMount() {
         this.setState({
-            subtotal: this.props.price
+            subtotal: this.props.price,
         })
+
     }
 
 
