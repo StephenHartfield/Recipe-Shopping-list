@@ -11,7 +11,7 @@ import {
 const initialState = {
     order: {},
     orders: [],
-    total: [0],
+    total: 0,
     msg: 'Cart not updated'
 }
 
@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
         case POST_TOTAL:
             return {
                 ...state,
-                total: parseFloat([state.total, action.payload].reduce((a, b) => a + b))
+                total: parseFloat(state.total) + action.payload
             }
         case MINUS_TOTAL:
             return {

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './home.scss'
 import axios from 'axios';
 import ImageTray from './imagepane.js'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
-import { Row, Col, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 const ftitle = ['Too Blessed and Too Anointed', 'Romans 12:12 Wooden Sign 12x12', 'I am with you always']

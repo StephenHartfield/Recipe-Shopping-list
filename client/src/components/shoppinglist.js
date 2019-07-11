@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { Container, Col, Row, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, CardFooter, Badge, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Container, CardDeck, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, CardFooter, Badge, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'
 import { connect } from 'react-redux';
 import { getItems, deleteItem, updateItem } from '../actions/itemaction.js';
 import PropTypes from 'prop-types';
@@ -99,7 +98,6 @@ class ShoppingList extends Component {
 
     render() {
         const { items } = this.props.item;
-        console.log(items);
         return (
             <div>
             <Container className='list-container'>

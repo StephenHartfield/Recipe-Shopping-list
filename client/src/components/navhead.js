@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import {photos} from './photos'
 import './navhead.css'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Container } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
 import { photos } from '../components/Hota/photos.js'
 

@@ -4,7 +4,7 @@ import { addOrder, getOrders, updateOrder, postTotal } from '../actions/orderact
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Col, Row, Container, CardImg, Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap'
+import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap'
 import './product.scss'
 
 class Product extends Component {
@@ -69,7 +69,6 @@ class Product extends Component {
         const id = ((orders || {})[0] || {})._id;
         const product = ((orders || {})[0] || {}).product;
         const newProduct = product.concat(item);
-        console.log(newProduct);
         const toAdd = [{ 'propsName': 'product', 'value': newProduct }]
         var that = this;
 

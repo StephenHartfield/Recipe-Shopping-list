@@ -1,10 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import './linksexit.css'
 
 class LinksExit extends Component {
-    constructor(props) {
-        super(props);
-    }
+  
 
     render() {
         const fburl = 'www.facebook.com/margogardner1?ref=br_rs';

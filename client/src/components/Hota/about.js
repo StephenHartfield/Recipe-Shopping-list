@@ -18,7 +18,7 @@ class About extends Component {
 							<img src={photos(19)} alt="" className='aboutimage'/>
 						</Col>
 						<Col className='pic-container' md={5}>
-							<img src={photos(20)} className='aboutimage' alt="picture of Margo"/>
+							<img src={photos(20)} className='aboutimage' alt="about Margo"/>
 						</Col>
 					</Row>
 					<Row>

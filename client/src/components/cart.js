@@ -17,7 +17,6 @@ class Cart extends Component {
         const { product } = ((this.props.order.orders || {})[0] || {});
         setTimeout(() => {
             if (product) {
-                console.log(product);
                 product.map(product => this.props.postTotal(product.price))
             }
         }, 2000);

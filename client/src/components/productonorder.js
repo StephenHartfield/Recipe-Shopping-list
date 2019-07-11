@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { postTotal, minusTotal, getOrders, updateOrder } from '../actions/orderaction.js'
 import { connect } from 'react-redux';
 import './productonorder.scss'
-import { Button } from 'reactstrap';
 
 
 class ProductonOrder extends Component {
@@ -58,7 +57,7 @@ class ProductonOrder extends Component {
                     <div className='pooHeader upper'>{this.props.name}</div>
                     <div className='body'>
                       <div className='pooImg'>
-                          <img src={this.props.productImage} className='img img-responsive'/>
+                          <img src={this.props.productImage} className='img img-responsive' alt=''/>
                       </div>
                       <div className='table'>
                           <div className='pooTxt'>{this.props.description}</div>
